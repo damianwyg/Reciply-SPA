@@ -12,10 +12,11 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { UsersListComponent } from './users-list/users-list.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { MyRecipesListComponent } from './my-recipes-list/my-recipes-list.component';
 import { routes } from './routes';
+import { UserCardComponent } from './users/user-card/user-card.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { routes } from './routes';
     UsersListComponent,
     RecipesListComponent,
     MyRecipesListComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
