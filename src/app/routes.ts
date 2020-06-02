@@ -10,6 +10,11 @@ import { UserListResolver } from './_resolvers/user-list.resolver';
 import { RecipesListResolver } from './_resolvers/recipes-list.resolver';
 import { RecipeDetailsComponent } from './recpies/recipe-details/recipe-details.component';
 import { RecipeDetailsResolver } from './_resolvers/recipe-details.resolver';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes';
+import { RecipeEditResolver } from './_resolvers/recipe-edit.resolver';
+import { RecipeEditComponent } from './recpies/recipe-edit/recipe-edit.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +34,12 @@ export const routes: Routes = [
         resolve: { user: UserDetailsResolver },
       },
       {
+        path: 'user/edit',
+        component: UserEditComponent,
+        resolve: { user: UserEditResolver },
+        canDeactivate: [PreventUnsavedChanges],
+      },
+      {
         path: 'recipes',
         component: RecipesListComponent,
         resolve: { recipes: RecipesListResolver },
@@ -39,8 +50,14 @@ export const routes: Routes = [
         resolve: { recipe: RecipeDetailsResolver },
       },
       {
+        path: 'recipes/edit/:id',
+        component: RecipeEditComponent,
+        resolve: { recipe: RecipeEditResolver },
+      },
+      {
         path: 'myrecipes',
         component: MyRecipesListComponent,
+        resolve: { recipes: RecipesListResolver },
       },
     ],
   },

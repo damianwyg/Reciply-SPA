@@ -7,7 +7,7 @@ import { Recipe } from '../_models/recipe';
 import { RecipeService } from '../_services/recipe.service';
 
 @Injectable()
-export class RecipeDetailsResolver implements Resolve<Recipe> {
+export class RecipeEditResolver implements Resolve<Recipe> {
   constructor(
     private recipeService: RecipeService,
     private router: Router,

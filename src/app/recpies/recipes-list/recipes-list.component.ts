@@ -15,7 +15,6 @@ export class RecipesListComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.recipes = data['recipes'];
-      console.log(this.recipes);
     });
   }
 }

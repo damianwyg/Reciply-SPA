@@ -7,10 +7,10 @@
         <a class="nav-link" [routerLink]="['/recipes']">Recipes</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/users']">Users</a>
+        <a class="nav-link" [routerLink]="['/myrecipes']">My Recipes</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/myrecipes']">My Recipes</a>
+        <a class="nav-link" [routerLink]="['/users']">Users</a>
       </li>
     </ul>
 
@@ -19,7 +19,7 @@
         Welcome {{ authService.decodedToken?.unique_name | titlecase }}
       </a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item" href="#"
+        <a class="dropdown-item" [routerLink]="['/user/edit']"
           ><i class="fa fa-user"></i> Edit profile</a
         >
         <div class="dropdown-divider"></div>

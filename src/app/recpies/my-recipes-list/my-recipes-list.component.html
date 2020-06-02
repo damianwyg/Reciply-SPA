@@ -1,1 +1,7 @@
-<p>my-recipes-list works!</p>
+<div class="container">
+    <div class="row p-3">
+      <div *ngFor="let recipe of recipes" class="col-lg-2 col-md-3 col-sm-6">
+        <app-myrecipe-card [recipe]="recipe"></app-myrecipe-card>
+      </div>
+    </div>
+  </div>

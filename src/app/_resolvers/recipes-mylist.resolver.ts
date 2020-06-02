@@ -5,20 +5,22 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Recipe } from '../_models/recipe';
 import { RecipeService } from '../_services/recipe.service';
+import { UserService } from '../_services/user.service';
 
 @Injectable()
-export class RecipeDetailsResolver implements Resolve<Recipe> {
+export class RecipesMyListResolver implements Resolve<Recipe[]> {
   constructor(
     private recipeService: RecipeService,
+    private userService: UserService,
     private router: Router,
     private alertify: AlertifyService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Recipe> {
-    return this.recipeService.getRecipe(route.params['id']).pipe(
+  resolve(route: ActivatedRouteSnapshot): Observable<Recipe[]> {
+    return this.userService.getUser(route.params['id']).pipe(
       catchError((error) => {
         this.alertify.error('Problem retrieving data');
-        this.router.navigate(['/users']);
+        this.router.navigate(['/home']);
         return of(null);
       })
     );
