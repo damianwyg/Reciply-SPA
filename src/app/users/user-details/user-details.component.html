@@ -29,7 +29,13 @@
               <p>{{user.aboutMe}}</p>
             </tab>
             <tab heading="Recipes">
-              <p>Recipes go here</p>
+              <div class="container">
+                <div class="row">
+                  <div *ngFor="let recipe of user.recipes" class="col-lg-2 col-md-3 col-sm-6">
+                    <app-recipe-card [recipe]="recipe"></app-recipe-card>
+                  </div>
+                </div>
+              </div>
             </tab>
           </tabset>
         </div>
