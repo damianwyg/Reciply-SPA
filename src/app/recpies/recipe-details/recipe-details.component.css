@@ -1,6 +1,10 @@
 .fa-leaf {
-    color: green;
+  color: green;
 }
 .fa-pagelines {
-    color: green;
+  color: green;
+}
+
+.img-circle {
+  max-height: 50px;
 }
