@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -14,10 +16,17 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { UsersListComponent } from './users/users-list/users-list.component';
-import { RecipesListComponent } from './recipes-list/recipes-list.component';
-import { MyRecipesListComponent } from './my-recipes-list/my-recipes-list.component';
+import { RecipesListComponent } from './recpies/recipes-list/recipes-list.component';
+import { MyRecipesListComponent } from './recpies/my-recipes-list/my-recipes-list.component';
 import { routes } from './routes';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { RecipeDetailsComponent } from './recpies/recipe-details/recipe-details.component';
+import { RecipeCardComponent } from './recpies/recipe-card/recipe-card.component';
+import { UserListResolver } from './_resolvers/user-list.resolver';
+import { RecipesListResolver } from './_resolvers/recipes-list.resolver';
+import { UserDetailsResolver } from './_resolvers/user-details.resolver';
+import { RecipeDetailsResolver } from './_resolvers/recipe-details.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -32,6 +41,9 @@ export function tokenGetter() {
     RecipesListComponent,
     MyRecipesListComponent,
     UserCardComponent,
+    UserDetailsComponent,
+    RecipeDetailsComponent,
+    RecipeCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +51,9 @@ export function tokenGetter() {
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     RouterModule.forRoot(routes),
+    TooltipModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -48,7 +62,14 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [AuthService, ErrorInterceptorProvider],
+  providers: [
+    AuthService,
+    ErrorInterceptorProvider,
+    UserListResolver,
+    UserDetailsResolver,
+    RecipesListResolver,
+    RecipeDetailsResolver
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
