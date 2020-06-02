@@ -1,7 +1,7 @@
 import { Recipe } from './recipe';
 
 export interface User {
-  id: number;
+  userId: number;
   userName: string;
   displayName: string;
   email: string;
