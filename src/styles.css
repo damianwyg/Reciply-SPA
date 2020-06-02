@@ -4,3 +4,26 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+
+.tab-panel {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.nav-tabs > li.open,
+.user-tabset > .nav-tabs > li:hover {
+  border-bottom: 4px solid #fbcdcf;
+}
+
+.user-tabset > .nav-tabs > li.active {
+  border-bottom: 4px solid green;
+  position: relative;
+}
+
+.user-tabset > .tab-content {
+  margin-top: -3px;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
