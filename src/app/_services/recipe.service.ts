@@ -31,4 +31,10 @@ export class RecipeService {
       recipe
     );
   }
+
+  deleteRecipe(userId: number, recipeId: number) {
+    return this.http.delete(
+      this.baseUrl + 'recipes/users/' + userId + '/' + recipeId
+    );
+  }
 }

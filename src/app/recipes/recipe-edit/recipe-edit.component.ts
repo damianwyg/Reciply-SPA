@@ -20,7 +20,7 @@ import { RecipeService } from 'src/app/_services/recipe.service';
 })
 export class RecipeEditComponent implements OnInit {
   recipe: Recipe;
-  recipeId: number
+  recipeId: number;
   recipeForm: FormGroup;
   ingredientsListArray: FormArray;
 
@@ -67,13 +67,26 @@ export class RecipeEditComponent implements OnInit {
         )
         .subscribe(
           () => {
-            this.router.navigate(['/recipes']);
+            this.router.navigate(['/myrecipes']);
           },
           (error) => {
-            console.log(error);
+            this.alertify.error(error);
           }
         );
     }
+  }
+
+  deleteRecipe() {
+    this.recipeService
+      .deleteRecipe(this.authService.decodedToken.nameid, this.recipeId)
+      .subscribe(
+        () => {
+          this.router.navigate(['/myrecipes']);
+        },
+        (error) => {
+          this.alertify.error(error);
+        }
+      );
   }
 
   createIngredient(ingredient): FormGroup {

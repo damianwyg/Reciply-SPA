@@ -101,9 +101,14 @@
           Add new ingredient
         </button>
       </div>
-      <button class="btn btn-success" (click)="updateRecipe()">
-        Update recipe
-      </button>
+      <div class="d-flex justify-content-start">
+        <button class="btn btn-success" (click)="updateRecipe()">
+          Update recipe
+        </button>
+        <button class="btn btn-danger" (click)="deleteRecipe()">
+          Remove recipe
+        </button>
+      </div>
     </div>
   </form>
 </div>
