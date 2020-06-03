@@ -15,6 +15,7 @@ import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes';
 import { RecipeEditResolver } from './_resolvers/recipe-edit.resolver';
 import { RecipeEditComponent } from './recpies/recipe-edit/recipe-edit.component';
+import { RecipeAddComponent } from './recpies/recipe-add/recipe-add.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,9 +46,13 @@ export const routes: Routes = [
         resolve: { recipes: RecipesListResolver },
       },
       {
+        path: 'recipes/add',
+        component: RecipeAddComponent,
+      },
+      {
         path: 'recipes/:id',
         component: RecipeDetailsComponent,
-        resolve: { recipe: RecipeDetailsResolver, user: UserDetailsResolver },
+        resolve: { recipe: RecipeDetailsResolver},
       },
       {
         path: 'recipes/edit/:id',

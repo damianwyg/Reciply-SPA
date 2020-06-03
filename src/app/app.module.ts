@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -33,6 +33,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes';
 import { MyrecipeCardComponent } from './recpies/myrecipe-card/myrecipe-card.component';
 import { RecipeEditComponent } from './recpies/recipe-edit/recipe-edit.component';
 import { RecipeEditResolver } from './_resolvers/recipe-edit.resolver';
+import { RecipeAddComponent } from './recpies/recipe-add/recipe-add.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -53,6 +54,7 @@ export function tokenGetter() {
     UserEditComponent,
     MyrecipeCardComponent,
     RecipeEditComponent,
+    RecipeAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ export function tokenGetter() {
     TabsModule.forRoot(),
     RouterModule.forRoot(routes),
     TooltipModule.forRoot(),
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -20,4 +20,9 @@ export class RecipeService {
   getRecipe(id): Observable<Recipe> {
     return this.http.get<Recipe>(this.baseUrl + 'recipes/' + id);
   }
+
+  createRecipe(id: number, recipe: Recipe) {
+    console.log(id, recipe);
+    return this.http.post(this.baseUrl + 'recipes/users/' + id, recipe);
+  }
 }
