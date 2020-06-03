@@ -12,10 +12,10 @@
         >
           {{ recipe.name }} by
           <img
-            src="{{ user.avatarUrl }}"
+            src="{{ recipe.avatarUrl }}"
             class="img-circle rounded-circle mr-auto p-2"
-            [routerLink]="['/users/', user.userId]"
-            tooltip="{{user.displayName}}"
+            [routerLink]="['/users/', recipe.userId]"
+            tooltip="{{recipe.displayName}}"
           />
           <span class="badge badge-primary badge-pill">
             <i

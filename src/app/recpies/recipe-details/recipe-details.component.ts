@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from 'src/app/_models/recipe';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
+import { RecipeForDetails } from 'src/app/_models/recipeForDetails';
 
 @Component({
   selector: 'app-recipe-details',
@@ -10,8 +9,7 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe: Recipe;
-  user: User;
+  recipe: RecipeForDetails;
 
   constructor(
     private route: ActivatedRoute
@@ -20,7 +18,6 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.recipe = data['recipe'];
-      this.user = data['user'];
     });
   }
 }
