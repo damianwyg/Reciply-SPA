@@ -22,7 +22,13 @@ export class RecipeService {
   }
 
   createRecipe(id: number, recipe: Recipe) {
-    console.log(id, recipe);
     return this.http.post(this.baseUrl + 'recipes/users/' + id, recipe);
+  }
+
+  updateRecipe(userId: number, recipeId: number, recipe: Recipe) {
+    return this.http.put(
+      this.baseUrl + 'recipes/users/' + userId + '/' + recipeId,
+      recipe
+    );
   }
 }
