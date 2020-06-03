@@ -1,64 +1,76 @@
-<form [formGroup]="recipeForm" class="form-validate form-horizontal"  novalidate="">
-  <!-- START panel-->
-      <div class="panel-body">    
-          <legend>New Invoice</legend>                           
-         <fieldset>
-              <div class="form-group">
-                  <label class="col-sm-2 control-label">Recipe Name:</label>
-                   <div class="col-sm-6">
-                      <input class="form-control" type="text" formControlName="name"  placeholder="Recipe name"/>
+<div class="container">
+    <form [formGroup]="recipeForm" class="form-validate form-horizontal"  novalidate="">
+            <div class="panel-body">    
+                <legend>Add new recipe</legend>                           
+               <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Recipe Name:</label>
+                         <div class="col-sm-6">
+                            <input class="form-control" type="text" formControlName="name"  placeholder="Recipe name"/>
+                        </div>
+                    </div>
+                </fieldset>
+               <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Preparation:</label>
+                         <div class="col-sm-6">
+                            <textarea
+                            class="form-control"
+                            type="text"
+                            formControlName="preparation"
+                            placeholder="Preparation"
+                            rows="6"
+                          ></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+               <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Image url:</label>
+                         <div class="col-sm-6">
+                            <input class="form-control" type="text" formControlName="photoUrl"  placeholder="Url for recipe photo"/>
+                        </div>
+                    </div>
+                </fieldset>
+               <fieldset>
+                    <div class="form-group">
+                        <table formArrayName="ingredients">
+                            <tr>
+                             <th>Ingredient name</th>
+                             <th>Quantity</th>
+                             <th>Unit</th>
+                            </tr>
+                            <tr  *ngFor="let ingredientList of ingredientsListArray.controls;let i = index" [formGroupName]="i">
+                                <td>
+                                     <div class="col-sm-6">
+                                         <input class="form-control" type="text" placeholder="Ingredient name" formControlName = "name"/>
+                                     </div>
+                                </td>
+                                 <td>
+                                     <div class="col-sm-6">
+                                         <input class="form-control" type="number"   placeholder="Quantity" formControlName = "quantity" />
+                                     </div>
+                                </td>
+                                 <td>
+                                     <div class="col-sm-6">
+                                         <input class="form-control" type="text"   placeholder="Unit" formControlName = "unit"/>
+                                     </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+      
+      
+      
+                <div>
+                    <button class="btn btn-primary" (click)="addIngredientsListItem()">
+                      Add new ingredient
+                    </button>
                   </div>
-              </div>
-          </fieldset>
-         <fieldset>
-              <div class="form-group">
-                  <label class="col-sm-2 control-label">Preparation:</label>
-                   <div class="col-sm-6">
-                      <input class="form-control" type="text" formControlName="preparation"  placeholder="Preparation"/>
-                  </div>
-              </div>
-          </fieldset>
-         <fieldset>
-              <div class="form-group">
-                  <label class="col-sm-2 control-label">Image url:</label>
-                   <div class="col-sm-6">
-                      <input class="form-control" type="text" formControlName="url"  placeholder="Url for recipe photo"/>
-                  </div>
-              </div>
-          </fieldset>
-         <fieldset>
-              <div class="form-group">
-                  <table formArrayName="ingredients">
-                      <tr>
-                       <th>Ingredient name</th>
-                       <th>Quantity</th>
-                       <th>Unit</th>
-                      </tr>
-                      <tr  *ngFor="let ingredientList of ingredientsListArray.controls;let i = index" [formGroupName]="i">
-                          <td>
-                               <div class="col-sm-6">
-                                   <input class="form-control" type="text" placeholder="Ingredient name" formControlName = "name"/>
-                               </div>
-                          </td>
-                           <td>
-                               <div class="col-sm-6">
-                                   <input class="form-control" type="number"   placeholder="Quantity" formControlName = "quantity" />
-                               </div>
-                          </td>
-                           <td>
-                               <div class="col-sm-6">
-                                   <input class="form-control" type="text"   placeholder="Unit" formControlName = "unit"/>
-                               </div>
-                          </td>
-                      </tr>
-                  </table>
-              </div>
-          </fieldset>
-
-
-
-          <div>   <button (click)='createRecipe()'>Create recipe</button></div>
-          <button (click)="addSalesListItem()">Add new ingredient
-          </button>
-      </div>
-</form>
+                  <button class="btn btn-success" (click)="createRecipe()">
+                    Create recipe
+                  </button>
+                </div>
+      </form>
+</div>

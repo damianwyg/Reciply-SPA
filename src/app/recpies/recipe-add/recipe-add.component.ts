@@ -32,7 +32,7 @@ export class RecipeAddComponent implements OnInit {
     this.recipeForm = this.formBuilder.group({
       name: ['', Validators.required],
       preparation: ['', Validators.required],
-      url: ['', Validators.required],
+      photoUrl: ['', Validators.required],
       ingredients: this.formBuilder.array([
         this.formBuilder.group({
           name: ['', Validators.required],
@@ -58,7 +58,7 @@ export class RecipeAddComponent implements OnInit {
     }
   }
 
-  addSalesListItem() {
+  addIngredientsListItem() {
     let formGroup: FormGroup = this.formBuilder.group({
       name: ['', Validators.required],
       quantity: ['', Validators.required],
