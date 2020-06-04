@@ -52,7 +52,7 @@ export const routes: Routes = [
       {
         path: 'recipes/:id',
         component: RecipeDetailsComponent,
-        resolve: { recipe: RecipeDetailsResolver},
+        resolve: { recipe: RecipeDetailsResolver, user: UserEditResolver},
       },
       {
         path: 'recipes/edit/:id',

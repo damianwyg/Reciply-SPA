@@ -14,27 +14,33 @@ export class RecipeService {
   constructor(private http: HttpClient) {}
 
   getRecipes(): Observable<RecipeForDetails[]> {
-    return this.http.get<RecipeForDetails[]>(this.baseUrl + 'recipes');
+    return this.http.get<RecipeForDetails[]>(this.baseUrl + 'users/recipes');
   }
 
   getRecipe(id): Observable<Recipe> {
-    return this.http.get<Recipe>(this.baseUrl + 'recipes/' + id);
+    return this.http.get<Recipe>(this.baseUrl + 'users/recipes/' + id);
   }
 
-  createRecipe(id: number, recipe: Recipe) {
-    return this.http.post(this.baseUrl + 'recipes/users/' + id, recipe);
+  createRecipe(recipe: Recipe) {
+    return this.http.post(this.baseUrl + 'users/recipes/', recipe);
   }
 
-  updateRecipe(userId: number, recipeId: number, recipe: Recipe) {
-    return this.http.put(
-      this.baseUrl + 'recipes/users/' + userId + '/' + recipeId,
-      recipe
+  updateRecipe(recipeId: number, recipe: Recipe) {
+    return this.http.put(this.baseUrl + 'users/recipes/' + recipeId, recipe);
+  }
+
+  deleteRecipe(recipeId: number) {
+    return this.http.delete(this.baseUrl + 'users/recipes/' + recipeId);
+  }
+
+  addComment(id: number, comment: Comment) {
+    return this.http.post(
+      this.baseUrl + 'users/recipes/' + id + '/comments',
+      comment
     );
   }
 
-  deleteRecipe(userId: number, recipeId: number) {
-    return this.http.delete(
-      this.baseUrl + 'recipes/users/' + userId + '/' + recipeId
-    );
+  getCommentsForRecipe(id: number) {
+    return this.http.get(this.baseUrl + 'users/recipes/' + id + '/comments');
   }
 }

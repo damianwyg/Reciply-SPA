@@ -15,7 +15,7 @@
             src="{{ recipe.avatarUrl }}"
             class="img-circle rounded-circle mr-auto p-2"
             [routerLink]="['/users/', recipe.userId]"
-            tooltip="{{recipe.displayName}}"
+            tooltip="{{ recipe.displayName }}"
           />
           <span class="badge badge-primary badge-pill">
             <i
@@ -43,10 +43,14 @@
       </div>
     </div>
     <div class="col-sm-8">
+      <h2>Preparation</h2>
       <div class="tab-panel">
-        <h2>Preparation</h2>
         {{ recipe.preparation }}
       </div>
+      <app-recipe-comments
+        [user]="user"
+        [recipeId]="recipe.recipeId"
+      ></app-recipe-comments>
     </div>
   </div>
 </div>

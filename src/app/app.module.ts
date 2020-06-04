@@ -34,6 +34,7 @@ import { MyrecipeCardComponent } from './recipes/myrecipe-card/myrecipe-card.com
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeEditResolver } from './_resolvers/recipe-edit.resolver';
 import { RecipeAddComponent } from './recipes/recipe-add/recipe-add.component';
+import { RecipeCommentsComponent } from './recipes/recipe-comments/recipe-comments.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -55,6 +56,7 @@ export function tokenGetter() {
     MyrecipeCardComponent,
     RecipeEditComponent,
     RecipeAddComponent,
+    RecipeCommentsComponent,
   ],
   imports: [
     BrowserModule,

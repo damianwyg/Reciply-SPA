@@ -50,7 +50,7 @@ export class RecipeAddComponent implements OnInit {
   createRecipe() {
     if (this.recipeForm.valid) {
       this.recipe = Object.assign({}, this.recipeForm.value);
-      this.recipeService.createRecipe(this.authService.decodedToken.nameid, this.recipe).subscribe(() => {
+      this.recipeService.createRecipe(this.recipe).subscribe(() => {
         this.router.navigate(['/recipes']);
       }, error => {
         console.log(error);

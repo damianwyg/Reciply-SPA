@@ -1,4 +1,5 @@
 import { Ingredient } from './ingredient';
+import { Comment } from './comment';
 
 export interface Recipe {
     recipeId: number;
@@ -9,4 +10,5 @@ export interface Recipe {
     isVegetarian: boolean;
     isVegan: boolean;
     ingredients?: Ingredient[];
+    comments?: Comment[];
 }

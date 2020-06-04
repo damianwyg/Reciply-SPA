@@ -61,7 +61,6 @@ export class RecipeEditComponent implements OnInit {
       this.recipe = Object.assign({}, this.recipeForm.value);
       this.recipeService
         .updateRecipe(
-          this.authService.decodedToken.nameid,
           this.recipeId,
           this.recipe
         )
@@ -78,7 +77,7 @@ export class RecipeEditComponent implements OnInit {
 
   deleteRecipe() {
     this.recipeService
-      .deleteRecipe(this.authService.decodedToken.nameid, this.recipeId)
+      .deleteRecipe(this.recipeId)
       .subscribe(
         () => {
           this.router.navigate(['/myrecipes']);
