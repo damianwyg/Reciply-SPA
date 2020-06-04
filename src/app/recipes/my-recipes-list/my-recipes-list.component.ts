@@ -11,12 +11,16 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class MyRecipesListComponent implements OnInit {
   recipes: Recipe[];
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
-      this.recipes = data['recipes'];
-      this.recipes = this.recipes.filter(r => r.userId === +this.authService.decodedToken.nameid);
+      this.recipes = data['recipes'].filter(
+        (r) => r.userId === +this.authService.decodedToken.nameid
+      );
     });
   }
 }
