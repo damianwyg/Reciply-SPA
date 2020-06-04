@@ -22,7 +22,12 @@ export class RecipeAddComponent implements OnInit {
   ingredientsListArray: FormArray;
   recipe: Recipe;
 
-  constructor(private formBuilder: FormBuilder, private recipeService: RecipeService, private authService: AuthService, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private recipeService: RecipeService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.buildForm();
@@ -33,6 +38,8 @@ export class RecipeAddComponent implements OnInit {
       name: ['', Validators.required],
       preparation: ['', Validators.required],
       photoUrl: ['', Validators.required],
+      isVegan: [false],
+      isVegetarian: [false],
       ingredients: this.formBuilder.array([
         this.formBuilder.group({
           name: ['', Validators.required],
@@ -42,19 +49,23 @@ export class RecipeAddComponent implements OnInit {
       ]),
     });
 
-    this.ingredientsListArray = this.recipeForm.get(
-      'ingredients'
-    ) as FormArray;
+    this.ingredientsListArray = this.recipeForm.get('ingredients') as FormArray;
   }
 
   createRecipe() {
     if (this.recipeForm.valid) {
       this.recipe = Object.assign({}, this.recipeForm.value);
-      this.recipeService.createRecipe(this.recipe).subscribe(() => {
-        this.router.navigate(['/recipes']);
-      }, error => {
-        console.log(error);
-      });
+      if (this.recipe.isVegan === true && this.recipe.isVegetarian === false) {
+        this.recipe.isVegetarian = true;
+      }
+      this.recipeService.createRecipe(this.recipe).subscribe(
+        () => {
+          this.router.navigate(['/recipes']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
   }
 

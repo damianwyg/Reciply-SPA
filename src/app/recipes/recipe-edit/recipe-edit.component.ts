@@ -7,8 +7,6 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { UserService } from 'src/app/_services/user.service';
-import { AuthService } from 'src/app/_services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { RecipeService } from 'src/app/_services/recipe.service';
@@ -25,9 +23,7 @@ export class RecipeEditComponent implements OnInit {
   ingredientsListArray: FormArray;
 
   constructor(
-    private userService: UserService,
     private recipeService: RecipeService,
-    private authService: AuthService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private alertify: AlertifyService,
@@ -45,6 +41,8 @@ export class RecipeEditComponent implements OnInit {
     this.recipeForm = this.formBuilder.group({
       name: [this.recipe.name, Validators.required],
       preparation: [this.recipe.preparation, Validators.required],
+      isVegan: [this.recipe.isVegan],
+      isVegetarian: [this.recipe.isVegetarian],
       photoUrl: [this.recipe.photoUrl, Validators.required],
       ingredients: this.formBuilder.array(
         this.recipe.ingredients.map((ingredient) =>
@@ -59,6 +57,9 @@ export class RecipeEditComponent implements OnInit {
   updateRecipe() {
     if (this.recipeForm.valid) {
       this.recipe = Object.assign({}, this.recipeForm.value);
+      if (this.recipe.isVegan === true && this.recipe.isVegetarian === false) {
+        this.recipe.isVegetarian = true;
+      }
       this.recipeService
         .updateRecipe(
           this.recipeId,

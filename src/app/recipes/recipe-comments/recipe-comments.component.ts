@@ -23,6 +23,8 @@ export class RecipeCommentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadComments();
+
+    
   }
 
   addComment() {
@@ -51,5 +53,9 @@ export class RecipeCommentsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  isUndefined() {
+    return this.comments === undefined;
   }
 }
