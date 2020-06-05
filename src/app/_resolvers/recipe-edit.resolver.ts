@@ -4,7 +4,7 @@ import { AlertifyService } from '../_services/alertify.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { RecipeService } from '../_services/recipe.service';
-import { RecipeForDetails } from '../_models/recipeForDetails';
+import { RecipeForDetails } from '../_models/RecipeForDetails';
 
 @Injectable()
 export class RecipeEditResolver implements Resolve<RecipeForDetails> {

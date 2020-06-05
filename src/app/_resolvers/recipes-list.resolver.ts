@@ -8,6 +8,9 @@ import { RecipeService } from '../_services/recipe.service';
 
 @Injectable()
 export class RecipesListResolver implements Resolve<Recipe[]> {
+  pageNumber = 1;
+  pageSize = 5;
+
   constructor(
     private recipeService: RecipeService,
     private router: Router,
@@ -15,7 +18,7 @@ export class RecipesListResolver implements Resolve<Recipe[]> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Recipe[]> {
-    return this.recipeService.getRecipes().pipe(
+    return this.recipeService.getRecipes(this.pageNumber, this.pageSize).pipe(
       catchError((error) => {
         this.alertify.error('Problem retrieving data');
         this.router.navigate(['/home']);
