@@ -8,6 +8,7 @@ export interface RecipeForDetails {
   isVegetarian: boolean;
   isVegan: boolean;
   ingredients?: Ingredient[];
+  dateAdded?: Date;
 
   // user part
   userId: number;

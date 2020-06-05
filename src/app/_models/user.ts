@@ -12,4 +12,5 @@ export interface User {
   country: string;
   aboutMe?: string;
   recipes?: Recipe[];
+  recipesCount?: number;
 }
