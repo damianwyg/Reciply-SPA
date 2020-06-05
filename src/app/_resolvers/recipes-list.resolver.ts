@@ -9,7 +9,7 @@ import { RecipeService } from '../_services/recipe.service';
 @Injectable()
 export class RecipesListResolver implements Resolve<Recipe[]> {
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = 12;
 
   constructor(
     private recipeService: RecipeService,

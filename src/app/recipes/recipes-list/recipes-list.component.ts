@@ -32,11 +32,11 @@ export class RecipesListComponent implements OnInit {
 
     this.myForm = this.formBuilder.group({
       isVegan: false,
-      isVegetarian: false
+      isVegetarian: false,
     });
 
     this.recipeParams.searchQuery = null;
-
+    this.recipeParams.userId = 0;
   }
 
   pageChanged(event: any): void {
@@ -66,9 +66,10 @@ export class RecipesListComponent implements OnInit {
 
   resetFilters() {
     this.recipeParams.searchQuery = null;
+    this.recipeParams.userId = 0;
     this.myForm = this.formBuilder.group({
       isVegan: false,
-      isVegetarian: false
+      isVegetarian: false,
     });
     this.loadRecipes();
   }

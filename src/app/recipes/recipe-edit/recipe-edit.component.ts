@@ -60,26 +60,7 @@ export class RecipeEditComponent implements OnInit {
       if (this.recipe.isVegan === true && this.recipe.isVegetarian === false) {
         this.recipe.isVegetarian = true;
       }
-      this.recipeService
-        .updateRecipe(
-          this.recipeId,
-          this.recipe
-        )
-        .subscribe(
-          () => {
-            this.router.navigate(['/myrecipes']);
-          },
-          (error) => {
-            this.alertify.error(error);
-          }
-        );
-    }
-  }
-
-  deleteRecipe() {
-    this.recipeService
-      .deleteRecipe(this.recipeId)
-      .subscribe(
+      this.recipeService.updateRecipe(this.recipeId, this.recipe).subscribe(
         () => {
           this.router.navigate(['/myrecipes']);
         },
@@ -87,6 +68,18 @@ export class RecipeEditComponent implements OnInit {
           this.alertify.error(error);
         }
       );
+    }
+  }
+
+  deleteRecipe() {
+    this.recipeService.deleteRecipe(this.recipeId).subscribe(
+      () => {
+        this.router.navigate(['/myrecipes']);
+      },
+      (error) => {
+        this.alertify.error(error);
+      }
+    );
   }
 
   createIngredient(ingredient): FormGroup {
