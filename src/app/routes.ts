@@ -16,6 +16,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes';
 import { RecipeEditResolver } from './_resolvers/recipe-edit.resolver';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeAddComponent } from './recipes/recipe-add/recipe-add.component';
+import { RecipesMyListResolver } from './_resolvers/recipes-mylist.resolver';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -62,7 +63,7 @@ export const routes: Routes = [
       {
         path: 'myrecipes',
         component: MyRecipesListComponent,
-        resolve: { recipes: RecipesListResolver },
+        resolve: { recipes: RecipesMyListResolver },
       },
     ],
   },

@@ -31,8 +31,10 @@ export class RecipeService {
       params = params.append('searchQuery', recipeParams.searchQuery);
       params = params.append('isVegan', recipeParams.isVegan);
       params = params.append('isVegetarian', recipeParams.isVegetarian);
+      params = params.append('userId', recipeParams.userId);
     }
-
+    console.log(params);
+    
     return this.http
       .get<Recipe[]>(this.baseUrl + 'users/recipes', {
         observe: 'response',

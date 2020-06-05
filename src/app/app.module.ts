@@ -37,6 +37,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { RecipeEditResolver } from './_resolvers/recipe-edit.resolver';
 import { RecipeAddComponent } from './recipes/recipe-add/recipe-add.component';
 import { RecipeCommentsComponent } from './recipes/recipe-comments/recipe-comments.component';
+import { RecipesMyListResolver } from './_resolvers/recipes-mylist.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -89,7 +90,8 @@ export function tokenGetter() {
     UserEditResolver,
     RecipesListResolver,
     RecipeDetailsResolver,
-    RecipeEditResolver
+    RecipeEditResolver,
+    RecipesMyListResolver
   ],
   bootstrap: [AppComponent],
 })
