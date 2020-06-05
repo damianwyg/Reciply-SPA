@@ -15,9 +15,6 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 })
 export class MyRecipesListComponent implements OnInit {
   recipes: Recipe[];
-  pagination: Pagination;
-  recipeParams: any = {};
-  myForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,52 +26,7 @@ export class MyRecipesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
-      this.recipes = data['recipes'].result;
-      this.pagination = data['recipes'].pagination;
+      this.recipes = data['recipes'];
     });
-
-    this.myForm = this.formBuilder.group({
-      isVegan: false,
-      isVegetarian: false
-    });
-
-    this.recipeParams.searchQuery = null;
-    this.recipeParams.userId = this.authService.decodedToken.nameid;
-
-  }
-
-  pageChanged(event: any): void {
-    this.pagination.currentPage = event.page;
-    this.loadRecipes();
-  }
-
-  loadRecipes() {
-    this.recipeParams.isVegan = this.myForm.value.isVegan;
-    this.recipeParams.isVegetarian = this.myForm.value.isVegetarian;
-    this.recipeService
-      .getRecipes(
-        this.pagination.currentPage,
-        this.pagination.itemsPerPage,
-        this.recipeParams
-      )
-      .subscribe(
-        (res: PaginatedResult<Recipe[]>) => {
-          this.recipes = res.result;
-          this.pagination = res.pagination;
-        },
-        (error) => {
-          this.alertify.error(error);
-        }
-      );
-  }
-
-  resetFilters() {
-    this.recipeParams.searchQuery = null;
-    this.recipeParams.userId = this.authService.decodedToken.nameid;
-    this.myForm = this.formBuilder.group({
-      isVegan: false,
-      isVegetarian: false
-    });
-    this.loadRecipes();
   }
 }

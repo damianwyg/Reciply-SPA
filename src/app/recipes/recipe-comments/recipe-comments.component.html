@@ -1,6 +1,6 @@
 <h2>Comments</h2>
 <div class="tab-panel">
-  <table class="table table-hover" style="cursor: pointer;" *ngIf="isUndefined()">
+  <table class="table table-hover" style="cursor: pointer;">
     <tr>
       <th style="width: 52%;">Comment</th>
       <th style="width: 18%;">Author</th>
@@ -20,7 +20,6 @@
       <td>{{ comment.dateAdded | date: 'short' }}</td>
     </tr>
   </table>
-  <h5 *ngIf="!isUndefined()">Add first comment</h5>
 </div>
 <div class="tab-panel">
   <div class="card-footer">

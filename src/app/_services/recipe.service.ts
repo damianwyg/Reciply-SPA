@@ -35,9 +35,9 @@ export class RecipeService {
       params = params.append('searchQuery', recipeParams.searchQuery);
       params = params.append('isVegan', recipeParams.isVegan);
       params = params.append('isVegetarian', recipeParams.isVegetarian);
-      params = params.append('userId', recipeParams.userId);
       params = params.append('followees', recipeParams.followees);
     }
+
     return this.http
       .get<Recipe[]>(this.baseUrl + 'users/recipes', {
         observe: 'response',
@@ -81,5 +81,9 @@ export class RecipeService {
 
   getCommentsForRecipe(id: number) {
     return this.http.get(this.baseUrl + 'users/recipes/' + id + '/comments');
+  }
+
+  getRecipesForCurrentUser() {
+    return this.http.get(this.baseUrl + 'users/recipes/myrecipes');
   }
 }

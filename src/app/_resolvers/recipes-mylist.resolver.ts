@@ -9,8 +9,6 @@ import { AuthService } from '../_services/auth.service';
 
 @Injectable()
 export class RecipesMyListResolver implements Resolve<Recipe[]> {
-  recipeParams: any = { userId: this.authService.decodedToken.nameid };
-
   constructor(
     private recipeService: RecipeService,
     private authService: AuthService,
@@ -19,7 +17,7 @@ export class RecipesMyListResolver implements Resolve<Recipe[]> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Recipe[]> {
-    return this.recipeService.getRecipes(this.recipeParams).pipe(
+    return this.recipeService.getRecipesForCurrentUser().pipe(
       catchError((error) => {
         this.alertify.error('Problem retrieving data');
         this.router.navigate(['/home']);

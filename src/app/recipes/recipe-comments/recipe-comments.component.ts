@@ -23,8 +23,6 @@ export class RecipeCommentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadComments();
-
-    
   }
 
   addComment() {
@@ -34,8 +32,6 @@ export class RecipeCommentsComponent implements OnInit {
 
     this.recipeService.addComment(this.recipeId, this.newComment).subscribe(
       (comment: Comment) => {
-        console.log(comment);
-
         this.comments.unshift(comment);
       },
       (error) => {
@@ -48,6 +44,7 @@ export class RecipeCommentsComponent implements OnInit {
     this.recipeService.getCommentsForRecipe(this.recipeId).subscribe(
       (comments: Comment[]) => {
         this.comments = comments;
+        console.log(this.comments);
       },
       (error) => {
         console.log(error);
@@ -55,7 +52,7 @@ export class RecipeCommentsComponent implements OnInit {
     );
   }
 
-  isUndefined() {
-    return this.comments === undefined;
-  }
+  // isUndefined() {
+  //   return this.comments === undefined;
+  // }
 }
