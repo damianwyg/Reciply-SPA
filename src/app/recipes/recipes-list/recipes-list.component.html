@@ -1,22 +1,84 @@
-<div class="container">
-  <div class="row p-3">
-    <div *ngFor="let recipe of recipes" class="col-lg-2 col-md-3 col-sm-6">
-      <app-recipe-card [recipe]="recipe"></app-recipe-card>
-    </div>
-  </div>
+<div class="text-center mt-3">
+  <h2>Recipes - {{ pagination.totalItems }} found</h2>
 </div>
 
-<div class="d-flex justify-content-center">
-  <pagination
-    [boundaryLinks]="true"
-    [totalItems]="pagination.totalItems"
-    [(ngModel)]="pagination.currentPage"
-    [itemsPerPage]="pagination.itemsPerPage"
-    (pageChanged)="pageChanged($event)"
-    previousText="&lsaquo;"
-    nextText="&rsaquo;"
-    firstText="&laquo;"
-    lastText="&raquo;"
+<div class="container mt-3 ">
+  <form
+    class="form-inline d-flex justify-content-center"
+    #form="ngForm"
+    (ngSubmit)="loadRecipes()"
+    novalidate
   >
-  </pagination>
+    <div class="form-group">
+      <label for="searchQuery">Search term: </label>
+      <input
+        type="text"
+        class="form-control ml-1"
+        style="width: 250px;"
+        id="searchQuery"
+        [(ngModel)]="recipeParams.searchQuery"
+        name="searchQuery"
+      />
+    </div>
+
+    <form [formGroup]="myForm" style="margin-left: 10px;">
+        <label
+          btnCheckbox
+          formControlName="isVegan"
+          [className]="
+            myForm.value.isVegan ? 'btn btn-success' : 'btn btn-primary'
+          "
+          tabindex="0"
+          role="button"
+          >Vegan</label
+        >
+    </form>
+    <form [formGroup]="myForm" style="margin-left: 10px;">
+        <label
+          btnCheckbox
+          formControlName="isVegetarian"
+          [className]="
+            myForm.value.isVegetarian ? 'btn btn-success' : 'btn btn-primary'
+          "
+          tabindex="1"
+          role="button"
+          >Vegetarian</label
+        >
+    </form>
+    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">
+      Apply Filters
+    </button>
+    <button
+      type="button"
+      class="btn btn-info"
+      (click)="resetFilters()"
+      style="margin-left: 10px;"
+    >
+      Reset Filter
+    </button>
+  </form>
+  <br />
+
+  <div class="container">
+    <div class="row p-3">
+      <div *ngFor="let recipe of recipes" class="col-lg-2 col-md-3 col-sm-6">
+        <app-recipe-card [recipe]="recipe"></app-recipe-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <pagination
+      [boundaryLinks]="true"
+      [totalItems]="pagination.totalItems"
+      [(ngModel)]="pagination.currentPage"
+      [itemsPerPage]="pagination.itemsPerPage"
+      (pageChanged)="pageChanged($event)"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+    >
+    </pagination>
+  </div>
 </div>
