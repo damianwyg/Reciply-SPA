@@ -15,7 +15,11 @@ export class RecipeService {
 
   constructor(private http: HttpClient) {}
 
-  getRecipes(page?, itemsPerPage?, recipeParams?): Observable<PaginatedResult<Recipe[]>> {
+  getRecipes(
+    page?,
+    itemsPerPage?,
+    recipeParams?
+  ): Observable<PaginatedResult<Recipe[]>> {
     const paginatedResult: PaginatedResult<Recipe[]> = new PaginatedResult<
       Recipe[]
     >();
@@ -32,9 +36,8 @@ export class RecipeService {
       params = params.append('isVegan', recipeParams.isVegan);
       params = params.append('isVegetarian', recipeParams.isVegetarian);
       params = params.append('userId', recipeParams.userId);
+      params = params.append('followees', recipeParams.followees);
     }
-    console.log(params);
-    
     return this.http
       .get<Recipe[]>(this.baseUrl + 'users/recipes', {
         observe: 'response',

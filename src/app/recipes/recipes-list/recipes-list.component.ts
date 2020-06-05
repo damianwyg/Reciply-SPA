@@ -33,6 +33,7 @@ export class RecipesListComponent implements OnInit {
     this.myForm = this.formBuilder.group({
       isVegan: false,
       isVegetarian: false,
+      followees: false
     });
 
     this.recipeParams.searchQuery = null;
@@ -47,6 +48,7 @@ export class RecipesListComponent implements OnInit {
   loadRecipes() {
     this.recipeParams.isVegan = this.myForm.value.isVegan;
     this.recipeParams.isVegetarian = this.myForm.value.isVegetarian;
+    this.recipeParams.followees = this.myForm.value.followees;
     this.recipeService
       .getRecipes(
         this.pagination.currentPage,
@@ -70,6 +72,7 @@ export class RecipesListComponent implements OnInit {
     this.myForm = this.formBuilder.group({
       isVegan: false,
       isVegetarian: false,
+      followees: false
     });
     this.loadRecipes();
   }

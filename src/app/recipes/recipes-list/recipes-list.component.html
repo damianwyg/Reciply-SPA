@@ -2,7 +2,7 @@
   <h2>Recipes - {{ pagination.totalItems }} found</h2>
 </div>
 
-<div class="container mt-3 ">
+<div class="container mt-3">
   <form
     class="form-inline d-flex justify-content-center"
     #form="ngForm"
@@ -22,28 +22,40 @@
     </div>
 
     <form [formGroup]="myForm" style="margin-left: 10px;">
-        <label
-          btnCheckbox
-          formControlName="isVegan"
-          [className]="
-            myForm.value.isVegan ? 'btn btn-success' : 'btn btn-primary'
-          "
-          tabindex="0"
-          role="button"
-          >Vegan</label
-        >
+      <label
+        btnCheckbox
+        formControlName="isVegan"
+        [className]="
+          myForm.value.isVegan ? 'btn btn-success' : 'btn btn-primary'
+        "
+        tabindex="0"
+        role="button"
+        >Vegan</label
+      >
     </form>
     <form [formGroup]="myForm" style="margin-left: 10px;">
-        <label
-          btnCheckbox
-          formControlName="isVegetarian"
-          [className]="
-            myForm.value.isVegetarian ? 'btn btn-success' : 'btn btn-primary'
-          "
-          tabindex="1"
-          role="button"
-          >Vegetarian</label
-        >
+      <label
+        btnCheckbox
+        formControlName="isVegetarian"
+        [className]="
+          myForm.value.isVegetarian ? 'btn btn-success' : 'btn btn-primary'
+        "
+        tabindex="1"
+        role="button"
+        >Vegetarian</label
+      >
+    </form>
+    <form [formGroup]="myForm" style="margin-left: 10px;">
+      <label
+        btnCheckbox
+        formControlName="followees"
+        [className]="
+          myForm.value.followees ? 'btn btn-success' : 'btn btn-primary'
+        "
+        tabindex="2"
+        role="button"
+        >Only followees</label
+      >
     </form>
     <button type="submit" class="btn btn-primary" style="margin-left: 10px;">
       Apply Filters
